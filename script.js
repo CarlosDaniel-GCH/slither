@@ -190,6 +190,8 @@ class Snake{
     update(){
         if(this.isDeath){
             this.transparency -=0.02;
+            this.draw();
+            return;
         }
 
         this.drawBody();
@@ -221,7 +223,7 @@ class Snake{
     death(){
         this.velocity = 0;
         this.keys.enable = false;
-        this.idDeath = true;
+        this.isDeath = true;
         this.body.forEach((b) =>{
             let lastItem = b.path[b.path.length-1];
             for(let i = 0; i < b.path.length; i++){
