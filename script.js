@@ -189,8 +189,13 @@ class Snake{
 
     update(){
         if(this.isDeath){
-            this.transparency -=0.02;
+            this.transparency = Math.max(0, this.transparency - 0.02);
+            this.body.forEach(b => b.transparency = this.transparency);
+            this.drawBody();
             this.draw();
+            if(this.transparency <= 0){
+                return;
+            }
             return;
         }
 
